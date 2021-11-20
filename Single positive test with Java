@@ -1,0 +1,65 @@
+package automation;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class SeleniumTest {
+	
+	static String name, family, firmName, street, city, email, postCode, phone = "";
+
+	public static void main(String[] args) throws InterruptedException {
+		UserInit();
+		
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\Balantaim\\Documents\\selenium-java-4.0.0\\WebDrivers\\geckodriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Balantaim\\Documents\\selenium-java-4.0.0\\WebDrivers\\chromedriver.exe");
+		
+//		WebDriver driverFirefox = new FirefoxDriver();
+		WebDriver driverChrome = new ChromeDriver();
+		
+		driverChrome.get("https://expresswater.bg/shop/");
+		Thread.sleep(2000);
+		
+		driverChrome.findElement(By.xpath("/html/body/div[4]/div/div/div[2]/div/aside[2]/ul/li[2]/a")).click();
+		Thread.sleep(2000);
+		
+		driverChrome.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/ul/li[4]/div/a[2]")).click();
+		driverChrome.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/ul/li[4]/div/a[2]")).click();
+		Thread.sleep(1000);
+		driverChrome.get("https://expresswater.bg/checkout/");
+		Thread.sleep(2000);
+		driverChrome.findElement(By.xpath("//*[@id=\"ship-to-different-address-checkbox\"]")).click();
+		WebElement txtBoxName = driverChrome.findElement(By.id("billing_first_name"));
+		txtBoxName.sendKeys(name);
+		WebElement txtBoxFamily = driverChrome.findElement(By.id("billing_last_name"));
+		txtBoxFamily.sendKeys(family);
+		WebElement txtCompany = driverChrome.findElement(By.id("billing_company"));
+		txtCompany.sendKeys(firmName);
+		WebElement txtStreet = driverChrome.findElement(By.id("billing_address_1"));
+		txtStreet.sendKeys(street);
+		WebElement txtCity = driverChrome.findElement(By.id("billing_city"));
+		txtCity.sendKeys(city);
+		WebElement txtCode = driverChrome.findElement(By.id("billing_postcode"));
+		txtCode.sendKeys(postCode);
+		WebElement txtPhone = driverChrome.findElement(By.id("billing_phone"));
+		txtPhone.sendKeys(phone);
+		WebElement txtEmail = driverChrome.findElement(By.id("billing_email"));
+		txtEmail.sendKeys(email);
+		driverChrome.findElement(By.id("shipping_method_0_free_shipping4")).click();
+		
+		driverChrome.findElement(By.id("terms")).click();
+
+	}
+	private static void UserInit() {
+		name = "Иван";
+		family = "Иванов";
+		firmName = "Facebook is new Meta";
+		street = "1164 Борисова Градина, София";
+		city = "София";
+		email = "neshto@abv.bg";
+		postCode = "1164";
+		phone = "0879999999";
+	}
+}
