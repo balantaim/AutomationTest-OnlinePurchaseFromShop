@@ -55,7 +55,7 @@ public class SeleniumTest {
 		driver.findElement(By.id("terms")).click();
 		Thread.sleep(300);
 		
-//		Final step to order the water. NOTE: The step is in the comment, we don't want to make real order! Without this step the case will fail every time!
+//		Final step to order the water. NOTE: The step is in the comment, we don't want to make real order! Without this step the test case will fail every time!
 //		driver.findElement(By.id("place_order")).click();
 
 	}
