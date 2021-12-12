@@ -75,11 +75,15 @@ public class SeleniumTest {
 		
 //		Final step to order the water. NOTE: The step is in the comment, we don't want to make real order! Without this step the test case will fail every time!
 //		driver.findElement(By.id("place_order")).click();
-
-//		if(driver.findElement(By.xpath("//*[@id=\"like_sc_button_1161239587\"]")).isDisplayed()) {
-//			status = true;
-//		}
+		Thread.sleep(2000);
+		String message = "Благодарности. Вашата поръчка беше получена.";
+		
 //		Save the test information in log.txt
+		if(driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).isDisplayed()) {
+			if(driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).getText() == message) {
+				status = true;
+			}	
+		}
 		CreateLog(status);
 		Thread.sleep(2000);
 		driver.quit();
