@@ -41,12 +41,11 @@ public class SeleniumTest {
 		if(driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/ul/li[4]/div/a[2]")).isDisplayed()) {
 			driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/ul/li[4]/div/a[2]")).click();
 			driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/ul/li[4]/div/a[2]")).click();
-		}else{
-			driver.get("https://expresswater.bg/product/trapezna-voda-serdika-19l/");
-			Thread.sleep(2000);
-			driver.findElement(By.name("add-to-cart")).click();
-			driver.findElement(By.name("add-to-cart")).click();
 		}
+		Thread.sleep(2000);
+		driver.get("https://expresswater.bg/product/trapezna-voda-serdika-19l/");
+		Thread.sleep(2000);
+		driver.findElement(By.name("add-to-cart")).click();
 		
 		Thread.sleep(1000);
 		driver.get("https://expresswater.bg/checkout/");
