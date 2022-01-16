@@ -1,6 +1,6 @@
 package automation;
 
-import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.Duration;
@@ -72,22 +72,25 @@ public class SeleniumTest {
 		driver.findElement(By.id("terms")).click();
 		Thread.sleep(2000);
 		
-//		Final step to order the water. NOTE: The step is in the comment, we don't want to make real order! Without this step the test case will fail every time!
+//		Final step to order the water. NOTE: The step is in the comment, we don't want to make real order! Without this step the case will fail every time!
 //		driver.findElement(By.id("place_order")).click();
 		Thread.sleep(2000);
-		String message = "Благодарности. Вашата поръчка беше получена.";
 		
 //		Save the test information in log.txt
 		if(driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).isDisplayed()) {
-			if(driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).getText() == message) {
+			String actualMessage = driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).getText();
+			String expectedMessage = "Благодарности. Вашата поръчка беше получена.";
+			if (actualMessage == expectedMessage) {
 				status = true;
-			}	
+			}
 		}
+		
 		CreateLog(status);
 		Thread.sleep(2000);
 		driver.quit();
 
 	}
+	
 	private static void UserInit() {
 		name = "Иван";
 		family = "Иванов";
@@ -98,19 +101,16 @@ public class SeleniumTest {
 		postCode = "1164";
 		phone = "0879999999";
 	}
+
 	public static void CreateLog(boolean status) {
 		try {
-			File file = new File("log.txt");
-			if(!file.exists()) {
-				file.createNewFile();
-			}
-			PrintWriter pw = new PrintWriter(file);
+			FileWriter fw = new FileWriter("log.txt", true);
+			PrintWriter pw = new PrintWriter(fw);
 			pw.println("Test");
-			pw.print("\tSuccess: " + status + ", OS: Windows 10 Pro version-20H2 (64-bit), Client: Chrome 96.0.4664.45 (64-bit)");
+			pw.println("\tSuccess: " + status + ", OS: Windows 10 Pro version-20H2 (64-bit), Client: Chrome 96.0.4664.45 (64-bit)");
 			pw.close();
 		} catch (IOException e) {
 		e.printStackTrace();
 		}
 	}
-	
 }
