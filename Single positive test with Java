@@ -76,7 +76,6 @@ public class SeleniumTest {
 //		driver.findElement(By.id("place_order")).click();
 		Thread.sleep(2000);
 		
-//		Save the test information in log.txt
 		if(driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).isDisplayed()) {
 			String actualMessage = driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).getText();
 			String expectedMessage = "Благодарности. Вашата поръчка беше получена.";
@@ -85,6 +84,7 @@ public class SeleniumTest {
 			}
 		}
 		
+//		Saving the result in log.txt
 		CreateLog(status);
 		Thread.sleep(2000);
 		driver.quit();
