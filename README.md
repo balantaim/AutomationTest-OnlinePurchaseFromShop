@@ -1,4 +1,5 @@
 # AutomationTest-OnlinePurchaseFromShop
+# [MIT License](LICENSE)
 Automation testing with Selenium
 
 In this test scenario we are trying to:
