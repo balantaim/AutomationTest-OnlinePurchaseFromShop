@@ -36,15 +36,15 @@ public class SeleniumTest {
 		driver.get("https://expresswater.bg/shop/");
 		
 		driver.findElement(By.xpath("/html/body/div[4]/div/div/div[2]/div/aside[2]/ul/li[2]/a")).click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		
 		if(driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/ul/li[4]/div/a[2]")).isDisplayed()) {
 			driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/ul/li[4]/div/a[2]")).click();
 			driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/ul/li[4]/div/a[2]")).click();
 		}
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		driver.get("https://expresswater.bg/product/trapezna-voda-serdika-19l/");
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		driver.findElement(By.name("add-to-cart")).click();
 		
 		Thread.sleep(1000);
@@ -70,11 +70,11 @@ public class SeleniumTest {
 		driver.findElement(By.id("shipping_method_0_free_shipping4")).click();
 		
 		driver.findElement(By.id("terms")).click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		
 //		Final step to order the water. NOTE: The step is in the comment, we don't want to make real order! Without this step the case will fail every time!
 //		driver.findElement(By.id("place_order")).click();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		
 		if(driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).isDisplayed()) {
 			String actualMessage = driver.findElement(By.cssSelector(".woocommerce-notice--successwoocommerce-thankyou-order-received")).getText();
@@ -86,7 +86,7 @@ public class SeleniumTest {
 		
 //		Saving the result in log.txt
 		CreateLog(status);
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		driver.quit();
 
 	}
